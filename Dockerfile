@@ -23,9 +23,6 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
-# Générer la clé Laravel
-RUN php artisan key:generate
-
 # Exposer le port
 EXPOSE 8000
 
