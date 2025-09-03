@@ -8,10 +8,6 @@ services:
       - "traefik.http.routers.laravel.entrypoints=websecure"
       - "traefik.http.routers.laravel.tls.certresolver=myresolver"
       - "traefik.http.services.laravel.loadbalancer.server.port=8000"
-      - "traefik.http.routers.laravel-http.rule=Host(`narratrice.fr`)"
-      - "traefik.http.routers.laravel-http.entrypoints=web"
-      - "traefik.http.routers.laravel-http.middlewares=redirect-to-https"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     environment:
       DB_CONNECTION: sqlite
       DB_DATABASE: var/www/html/database/database.sqlite
@@ -30,6 +26,8 @@ services:
         - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
         - "--certificatesresolvers.myresolver.acme.email=bouldoires.emmanuel@gmail.com"
         - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+        - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+        - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       ports:
         - "80:80"
         - "443:443"
