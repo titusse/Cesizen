@@ -11,6 +11,24 @@ services:
     working_dir: /var/www
     command: php artisan serve --host=0.0.0.0 --port=80
 
+  traefik:
+      image: traefik:v2.10
+      container_name: traefik
+      command:
+        - "--api.insecure=true"
+        - "--providers.docker=true"
+        - "--entrypoints.web.address=:80"
+        - "--entrypoints.websecure.address=:443"
+        - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+        - "--certificatesresolvers.myresolver.acme.email=tonemail@domaine.com"
+        - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      ports:
+        - "81:80"
+        - "443:443"
+      volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock:ro"
+        - "./traefik/letsencrypt:/letsencrypt"
+
   # db:
   #   image: sqlite:3
   #   container_name: laravel_db
