@@ -3,7 +3,7 @@ services:
     build: .
     container_name: laravel_app
     ports:
-      - "80:80"
+      - []
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.laravel.rule=Host(`tondomaine.com`)"
@@ -14,7 +14,7 @@ services:
       DB_DATABASE: var/www/html/database/database.sqlite
       DB_FOREIGN_KEYS: "true"
     working_dir: /var/www
-    command: php artisan serve --host=0.0.0.0 --port=80
+    command: php artisan serve --host=0.0.0.0 --port=8000
 
   traefik:
       image: traefik:v2.10
@@ -28,7 +28,7 @@ services:
         - "--certificatesresolvers.myresolver.acme.email=tonemail@domaine.com"
         - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       ports:
-        - "81:80"
+        - "80:80"
         - "443:443"
       volumes:
         - "/var/run/docker.sock:/var/run/docker.sock:ro"
