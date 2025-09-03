@@ -2,8 +2,7 @@ services:
   app:
     build: .
     container_name: laravel_app
-    ports:
-      - []
+    ports: []
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.laravel.rule=Host(`tondomaine.com`)"
