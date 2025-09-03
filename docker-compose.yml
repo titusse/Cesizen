@@ -2,10 +2,9 @@ services:
   app:
     build: .
     container_name: laravel_app
-    ports: []
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.laravel.rule=Host(`tondomaine.com`)"
+      - "traefik.http.routers.laravel.rule=Host(`narratrice.fr`)"
       - "traefik.http.routers.laravel.entrypoints=websecure"
       - "traefik.http.routers.laravel.tls.certresolver=myresolver"
     environment:
@@ -24,7 +23,7 @@ services:
         - "--entrypoints.web.address=:80"
         - "--entrypoints.websecure.address=:443"
         - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-        - "--certificatesresolvers.myresolver.acme.email=tonemail@domaine.com"
+        - "--certificatesresolvers.myresolver.acme.email=bouldoires.emmanuel@gmail.com"
         - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       ports:
         - "80:80"
