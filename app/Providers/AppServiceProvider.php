@@ -26,7 +26,13 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
         Pulse::auth(function ($request) {
-            return true; // autorise tout le monde, même sans être connecté
+            return true;
         });
+
+        // Gate::define('viewPulse', function (User $user) {
+
+        //     return $user->isAdmin();
+
+        // });
     }
 }
