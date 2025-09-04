@@ -28,7 +28,7 @@ export default defineConfig({
     },
     server: {
         hmr: {
-            host: 'alaisedeiz-dev.site',
+            host: '135.125.201.144',
             protocol: 'wss',
         },
     }

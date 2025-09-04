@@ -6,7 +6,7 @@ services:
     container_name: laravel_app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.laravel.rule=Host(`alaisedeiz-dev.site`)"
+      - "traefik.http.routers.laravel.rule=Host(`135.125.201.144`)"
       - "traefik.http.routers.laravel.entrypoints=websecure"
       - "traefik.http.routers.laravel.tls=true"
       - "traefik.http.routers.laravel.tls.certresolver=myresolver"
