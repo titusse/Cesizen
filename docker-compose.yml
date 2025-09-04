@@ -29,7 +29,6 @@ services:
         - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
         - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
         - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-        - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
         - "--certificatesresolvers.myresolver.acme.email=bouldoires.emmanuel@gmail.com"
         - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
         - "traefik.http.services.laravel.loadbalancer.server.port=8000"
