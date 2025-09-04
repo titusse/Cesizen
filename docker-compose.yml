@@ -20,11 +20,14 @@ services:
       image: traefik:v2.10
       container_name: traefik
       command:
+        - "--api.dashboard=true"
         - "--api.insecure=true"
         - "--providers.docker=true"
+        - "--providers.docker.exposedbydefault=false"
         - "--entrypoints.web.address=:80"
         - "--entrypoints.websecure.address=:443"
         - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+        - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
         - "--certificatesresolvers.myresolver.acme.email=bouldoires.emmanuel@gmail.com"
         - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
         - "traefik.http.services.laravel.loadbalancer.server.port=8000"
