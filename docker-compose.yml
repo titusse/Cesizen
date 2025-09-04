@@ -10,13 +10,13 @@ services:
       - "traefik.http.routers.laravel.entrypoints=websecure"
       - "traefik.http.routers.laravel.tls=true"
       - "traefik.http.routers.laravel.tls.certresolver=myresolver"
-      - "traefik.http.services.laravel.loadbalancer.server.port=8000"
+      - "traefik.http.services.laravel.loadbalancer.server.port=80"
     environment:
       DB_CONNECTION: sqlite
       DB_DATABASE: /var/www/html/database/database.sqlite
       DB_FOREIGN_KEYS: "true"
     working_dir: /var/www
-    command: php artisan serve --host=0.0.0.0 --port=8000
+    command: php artisan serve --host=0.0.0.0 --port=80
 
   traefik:
     image: traefik:v2.10
