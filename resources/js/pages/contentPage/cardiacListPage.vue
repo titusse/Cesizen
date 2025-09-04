@@ -14,7 +14,7 @@ import { Link } from '@inertiajs/vue3';
     <div>
         <Link :href="route('cardiac.form')">
             <button type="button">
-                Créer un exercice
+                Créer un jeu
             </button>
         </Link>
     </div>
