@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\User;
 
-use App\Providers\Pulse;
+use Laravel\Pulse\Facades\Pulse; 
 use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
