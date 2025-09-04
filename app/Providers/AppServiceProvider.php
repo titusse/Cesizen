@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') === 'production') {
             URL::forceScheme('https');
         }
-        Gate::define('viewPulse', function (User $user) {
-            return true;
+        Pulse::auth(function ($request) {
+            return true; // autorise tout le monde, même sans être connecté
         });
     }
 }
