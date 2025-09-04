@@ -4,8 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\User;
-
-use Laravel\Pulse\Facades\Pulse; 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,14 +24,9 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') === 'production') {
             URL::forceScheme('https');
         }
-        Pulse::auth(function ($request) {
-            return true;
+        
+        Gate::define('viewPulse', function ($user = null) {
+            return true; // autorise tout le monde, même sans login
         });
-
-        // Gate::define('viewPulse', function (User $user) {
-
-        //     return $user->isAdmin();
-
-        // });
     }
 }
