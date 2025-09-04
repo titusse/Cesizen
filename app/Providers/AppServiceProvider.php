@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
         Gate::define('viewPulse', function (User $user) {
-            return $user->isUser();
+            return true;
         });
     }
 }
