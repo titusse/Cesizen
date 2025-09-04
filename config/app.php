@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://narratrice.fr'),
+    'url' => env('APP_URL', 'https://alaisedeiz-dev.site'),
 
     /*
     |--------------------------------------------------------------------------

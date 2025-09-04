@@ -4,7 +4,7 @@ services:
     container_name: laravel_app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.laravel.rule=Host(`narratrice.fr`)"
+      - "traefik.http.routers.laravel.rule=Host(`alaisedeiz-dev.site`)"
       - "traefik.http.routers.laravel.entrypoints=websecure"
       - "traefik.http.routers.laravel.tls.certresolver=myresolver"
       - "traefik.http.services.laravel.loadbalancer.server.port=8000"
